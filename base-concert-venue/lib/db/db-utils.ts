@@ -37,6 +37,7 @@ export async function getJSONfromFile<ItemType extends JsonDataType>(
 ): Promise<ItemType[]> {
   const filePath = path.join(dbPath, filename);
   const data = await fs.readFile(filePath);
+
   return JSON.parse(data.toString());
 }
 
@@ -59,6 +60,7 @@ export async function writeJSONToFile<T extends JsonDataType>(
 ): Promise<void> {
   const filePath = path.join(dbPath, filename);
   const jsonData = JSON.stringify(data);
+
   await fs.writeFile(filePath, jsonData, { flag: "w" });
 }
 
